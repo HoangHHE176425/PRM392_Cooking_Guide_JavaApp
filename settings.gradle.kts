@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "PRM392_Cooking_Guide_JavaApp"
 include(":app")
- 
+include(":app:mylibrary")
