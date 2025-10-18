@@ -9,8 +9,7 @@ public class DatabaseConnection {
     private static final String TAG = "DatabaseConnection";
 
     // Thay "localhost" bằng IP thực của máy SQL Server
-    private static final String SERVER_IP = "10.33.38.45"; // IP máy chạy SQL Server
-//    192.168.13.102
+private static final String SERVER_NAME = "192.168.57.101";//    192.168.13.102
 //    10.33.8.133
 
     private static final String PORT = "1433";
@@ -21,27 +20,29 @@ public class DatabaseConnection {
     public static Connection getConnection() {
         Connection connection = null;
         try {
-            Log.d(TAG, "🔄 Đang kết nối SQL Server với jTDS...");
+            Log.d(TAG, "🔄 Đang kết nối SQL Server Express...");
 
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                     .permitAll().build();
             StrictMode.setThreadPolicy(policy);
 
-            // Load jTDS driver (tương thích tốt với Android)
+            // Load jTDS driver
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
             Log.d(TAG, "✅ jTDS Driver loaded thành công");
 
-            // Connection string cho jTDS
-            String connectionURL = "jdbc:jtds:sqlserver://" + SERVER_IP + ":" + PORT +
+            // Connection string với instance name
+            String connectionURL = "jdbc:jtds:sqlserver://" + SERVER_NAME + ":" + PORT +
                     ";databaseName=" + DATABASE_NAME +
                     ";user=" + USERNAME +
                     ";password=" + PASSWORD +
-                    ";loginTimeout=30;";
+                    ";loginTimeout=30" +
+                    ";instance=SQLEXPRESS";
 
-            Log.d(TAG, "🔗 Connecting to: " + SERVER_IP + ":" + PORT);
+            Log.d(TAG, "🔗 Connecting to: " + SERVER_NAME + ":" + PORT);
             Log.d(TAG, "🗄️ Database: " + DATABASE_NAME);
+            Log.d(TAG, "🔗 Connection string: " + connectionURL);
 
-            // Set timeout để tránh treo
+            // Set timeout
             DriverManager.setLoginTimeout(30);
             connection = DriverManager.getConnection(connectionURL);
 

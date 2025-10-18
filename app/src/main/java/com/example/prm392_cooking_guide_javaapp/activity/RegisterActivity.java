@@ -16,7 +16,7 @@ import com.example.prm392_cooking_guide_javaapp.entity.User;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class RegisterActivity extends AppCompatActivity {
-    private TextInputEditText edtUsername, edtEmail, edtPassword, edtConfirmPassword, edtFullName, edtBio;
+    private TextInputEditText edtUsername, edtEmail, edtPassword, edtConfirmPassword, edtFullName;
     private Button btnRegister, btnBackToLogin;
     private TextView tvStatus;
     private UserDAO userDAO;
@@ -37,7 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         edtConfirmPassword = findViewById(R.id.edtConfirmPassword);
         edtFullName = findViewById(R.id.edtFullName);
-        edtBio = findViewById(R.id.edtBio);
         btnRegister = findViewById(R.id.btnRegister);
         btnBackToLogin = findViewById(R.id.btnBackToLogin);
         tvStatus = findViewById(R.id.tvStatus);
@@ -58,7 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
         String password = edtPassword.getText().toString().trim();
         String confirmPassword = edtConfirmPassword.getText().toString().trim();
         String fullName = edtFullName.getText().toString().trim();
-        String bio = edtBio.getText().toString().trim();
 
         // Validation
         if (!validateInput(username, email, password, confirmPassword, fullName)) {
@@ -70,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
         setLoadingState(true);
 
         // Perform register in background
-        new RegisterTask().execute(username, email, password, fullName, bio);
+        new RegisterTask().execute(username, email, password, fullName);
     }
 
     private boolean validateInput(String username, String email, String password, String confirmPassword, String fullName) {
@@ -146,7 +144,6 @@ public class RegisterActivity extends AppCompatActivity {
             String email = params[1];
             String password = params[2];
             String fullName = params[3];
-            String bio = params[4];
 
             try {
                 // Check if username already exists
@@ -162,7 +159,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 // Create new user
-                User newUser = new User(username, email, password, bio, fullName, "user");
+                User newUser = new User(username, email, password, "", fullName, "user");
                 return userDAO.register(newUser);
 
             } catch (Exception e) {
@@ -176,7 +173,11 @@ public class RegisterActivity extends AppCompatActivity {
             setLoadingState(false);
             
             if (success) {
-                showStatus("Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.", true);
+                showStatus("✅ Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.", true);
+                
+                Toast.makeText(RegisterActivity.this, 
+                    "Đăng ký thành công!\nBạn có thể đăng nhập với tài khoản vừa tạo.", 
+                    Toast.LENGTH_LONG).show();
                 
                 // Delay before navigation for better UX
                 new android.os.Handler().postDelayed(() -> {
@@ -184,7 +185,8 @@ public class RegisterActivity extends AppCompatActivity {
                 }, 2000);
                 
             } else {
-                showStatus(errorMessage, false);
+                showStatus("❌ " + errorMessage, false);
+                Toast.makeText(RegisterActivity.this, "Đăng ký thất bại: " + errorMessage, Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -211,7 +213,6 @@ public class RegisterActivity extends AppCompatActivity {
         edtPassword.setEnabled(!isLoading);
         edtConfirmPassword.setEnabled(!isLoading);
         edtFullName.setEnabled(!isLoading);
-        edtBio.setEnabled(!isLoading);
         
         if (isLoading) {
             btnRegister.setText("Đang tạo tài khoản...");

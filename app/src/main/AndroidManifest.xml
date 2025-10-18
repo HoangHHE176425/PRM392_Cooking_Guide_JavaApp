@@ -33,6 +33,12 @@
             android:exported="false"
             android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
 
+        <!-- RegisterActivity -->
+        <activity
+            android:name="com.example.prm392_cooking_guide_javaapp.activity.RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
+
         <!-- TestConnectionActivity (để test database) -->
         <activity
             android:name="com.example.prm392_cooking_guide_javaapp.connectDB.TestConnectionActivity"
