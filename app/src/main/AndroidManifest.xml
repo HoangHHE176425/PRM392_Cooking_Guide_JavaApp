@@ -16,15 +16,28 @@
         android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp"
         tools:targetApi="35">
 
-        <!-- ✅ Chạy trực tiếp TestConnectionActivity -->
+        <!-- LoginActivity làm màn hình chính -->
         <activity
-            android:name="com.example.prm392_cooking_guide_javaapp.connectDB.TestConnectionActivity"
-            android:exported="true">
+            android:name="com.example.prm392_cooking_guide_javaapp.activity.LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- MainActivity -->
+        <activity
+            android:name="com.example.prm392_cooking_guide_javaapp.entity.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
+
+        <!-- TestConnectionActivity (để test database) -->
+        <activity
+            android:name="com.example.prm392_cooking_guide_javaapp.connectDB.TestConnectionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
 
     </application>
 

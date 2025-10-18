@@ -16,7 +16,7 @@ public class DatabaseConnection {
     private static final String PORT = "1433";
     private static final String DATABASE_NAME = "Cooking_guide";
     private static final String USERNAME = "sa";
-    private static final String PASSWORD = "a123";
+    private static final String PASSWORD = "123";
 
     public static Connection getConnection() {
         Connection connection = null;

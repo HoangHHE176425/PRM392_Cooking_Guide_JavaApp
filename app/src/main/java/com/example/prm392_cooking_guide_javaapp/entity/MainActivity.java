@@ -1,6 +1,11 @@
 package com.example.prm392_cooking_guide_javaapp.entity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,18 +14,97 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.R;
+import com.example.prm392_cooking_guide_javaapp.activity.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
+    private TextView tvWelcome, tvUserInfo;
+    private Button btnLogout, btnTestConnection;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        
+        // Check login status
+        sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
+        if (!sharedPreferences.getBoolean("isLoggedIn", false)) {
+            // Redirect to login
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return;
+        }
+        
+        initViews();
+        displayUserInfo();
+        setupListeners();
+        
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    private void initViews() {
+        tvWelcome = findViewById(R.id.tvWelcome);
+        tvUserInfo = findViewById(R.id.tvUserInfo);
+        btnLogout = findViewById(R.id.btnLogout);
+        btnTestConnection = findViewById(R.id.btnTestConnection);
+    }
+
+    private void displayUserInfo() {
+        String fullName = sharedPreferences.getString("fullName", "");
+        String username = sharedPreferences.getString("username", "");
+        String email = sharedPreferences.getString("email", "");
+        String role = sharedPreferences.getString("role", "");
+        String bio = sharedPreferences.getString("bio", "");
+
+        if (tvWelcome != null) {
+            tvWelcome.setText("Xin chào, " + fullName + "! 👋");
+        }
+
+        if (tvUserInfo != null) {
+            String userInfo = "👤 Tên đăng nhập: " + username + "\n" +
+                            "📧 Email: " + email + "\n" +
+                            "🎭 Vai trò: " + (role.equals("admin") ? "Quản trị viên" : "Người dùng") + "\n" +
+                            "📝 Giới thiệu: " + (bio.isEmpty() ? "Chưa cập nhật" : bio);
+            tvUserInfo.setText(userInfo);
+        }
+    }
+
+    private void setupListeners() {
+        if (btnLogout != null) {
+            btnLogout.setOnClickListener(v -> logout());
+        }
+
+        if (btnTestConnection != null) {
+            btnTestConnection.setOnClickListener(v -> {
+                Intent intent = new Intent(this, com.example.prm392_cooking_guide_javaapp.connectDB.TestConnectionActivity.class);
+                startActivity(intent);
+            });
+        }
+    }
+
+    private void logout() {
+        // Clear login data
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+        Toast.makeText(this, "Đã đăng xuất thành công!", Toast.LENGTH_SHORT).show();
+
+        // Go back to login
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Prevent back button from going to login
+        moveTaskToBack(true);
     }
 }
