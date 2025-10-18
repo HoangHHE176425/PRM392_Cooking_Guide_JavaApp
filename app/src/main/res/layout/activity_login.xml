@@ -137,18 +137,7 @@
             android:textSize="16sp"
             android:textColor="#FF6B35"
             android:background="@drawable/rounded_button_white"
-            android:layout_marginBottom="12dp"
             android:elevation="2dp" />
-
-        <Button
-            android:id="@+id/btnTestConnection"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="🔗 Test Database Connection"
-            android:textSize="14sp"
-            android:textColor="#666666"
-            android:background="@drawable/rounded_button_white"
-            android:elevation="1dp" />
 
             </LinearLayout>
 

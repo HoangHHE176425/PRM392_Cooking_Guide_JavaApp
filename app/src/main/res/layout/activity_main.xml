@@ -87,17 +87,6 @@
             android:layout_marginBottom="24dp">
 
             <Button
-                android:id="@+id/btnTestConnection"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="🔗 Test Database Connection"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:background="@drawable/rounded_button_orange"
-                android:layout_marginBottom="16dp"
-                android:elevation="4dp" />
-
-            <Button
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"

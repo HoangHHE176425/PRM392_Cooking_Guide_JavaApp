@@ -18,7 +18,7 @@ import com.example.prm392_cooking_guide_javaapp.activity.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvWelcome, tvUserInfo;
-    private Button btnLogout, btnTestConnection;
+    private Button btnLogout;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         tvWelcome = findViewById(R.id.tvWelcome);
         tvUserInfo = findViewById(R.id.tvUserInfo);
         btnLogout = findViewById(R.id.btnLogout);
-        btnTestConnection = findViewById(R.id.btnTestConnection);
     }
 
     private void displayUserInfo() {
@@ -77,13 +76,6 @@ public class MainActivity extends AppCompatActivity {
     private void setupListeners() {
         if (btnLogout != null) {
             btnLogout.setOnClickListener(v -> logout());
-        }
-
-        if (btnTestConnection != null) {
-            btnTestConnection.setOnClickListener(v -> {
-                Intent intent = new Intent(this, com.example.prm392_cooking_guide_javaapp.connectDB.TestConnectionActivity.class);
-                startActivity(intent);
-            });
         }
     }
 

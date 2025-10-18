@@ -23,11 +23,6 @@ public class UserDAO {
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             
-            if (connection == null) {
-                System.err.println("❌ Không thể kết nối database!");
-                return null;
-            }
-            
             statement.setString(1, username);
             statement.setString(2, password);
             
@@ -44,17 +39,10 @@ public class UserDAO {
                 user.setAvatarUrl(resultSet.getString("avatar_url"));
                 user.setRole(resultSet.getString("role"));
                 user.setCreatedAt(resultSet.getString("created_at"));
-                
-                System.out.println("✅ Login thành công cho user: " + username);
-            } else {
-                System.out.println("❌ Không tìm thấy user: " + username);
             }
             
         } catch (SQLException e) {
-            System.err.println("💥 Lỗi SQL đăng nhập: " + e.getMessage());
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.err.println("💥 Lỗi đăng nhập: " + e.getMessage());
+            System.err.println("Lỗi đăng nhập: " + e.getMessage());
             e.printStackTrace();
         }
         

@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginActivity extends AppCompatActivity {
     private TextInputEditText edtUsername, edtPassword;
-    private Button btnLogin, btnRegister, btnTestConnection;
+    private Button btnLogin, btnRegister;
     private TextView tvStatus;
     private UserDAO userDAO;
     private SharedPreferences sharedPreferences;
@@ -39,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
-        btnTestConnection = findViewById(R.id.btnTestConnection);
         tvStatus = findViewById(R.id.tvStatus);
     }
 
@@ -51,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
     private void setupListeners() {
         btnLogin.setOnClickListener(v -> performLogin());
         btnRegister.setOnClickListener(v -> openRegisterActivity());
-        btnTestConnection.setOnClickListener(v -> testDatabaseConnection());
     }
 
     private void checkLoginStatus() {
@@ -87,45 +85,8 @@ public class LoginActivity extends AppCompatActivity {
         showStatus("Đang đăng nhập...", true);
         setLoadingState(true);
 
-        // Test database connection first
-        new TestConnectionTask().execute(username, password);
-    }
-
-    private class TestConnectionTask extends AsyncTask<String, Void, Boolean> {
-        private String username, password;
-
-        @Override
-        protected Boolean doInBackground(String... params) {
-            try {
-                username = params[0];
-                password = params[1];
-                
-                // Test database connection
-                java.sql.Connection connection = com.example.prm392_cooking_guide_javaapp.connectDB.DatabaseConnection.getConnection();
-                if (connection != null && !connection.isClosed()) {
-                    connection.close();
-                    return true;
-                }
-                return false;
-            } catch (Exception e) {
-                System.err.println("💥 Lỗi test connection: " + e.getMessage());
-                e.printStackTrace();
-                return false;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(Boolean connectionOk) {
-            if (connectionOk) {
-                // Database connection OK, proceed with login
-                new LoginTask().execute(username, password);
-            } else {
-                // Database connection failed
-                setLoadingState(false);
-                showStatus("❌ Không thể kết nối database!", false);
-                Toast.makeText(LoginActivity.this, "Lỗi kết nối database! Vui lòng kiểm tra lại.", Toast.LENGTH_LONG).show();
-            }
-        }
+        // Perform login in background
+        new LoginTask().execute(username, password);
     }
 
     private class LoginTask extends AsyncTask<String, Void, User> {
@@ -196,44 +157,6 @@ public class LoginActivity extends AppCompatActivity {
     private void openRegisterActivity() {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
-    }
-
-    private void testDatabaseConnection() {
-        showStatus("Đang test kết nối database...", true);
-        btnTestConnection.setEnabled(false);
-        btnTestConnection.setText("Đang test...");
-
-        new AsyncTask<Void, Void, String>() {
-            @Override
-            protected String doInBackground(Void... voids) {
-                try {
-                    java.sql.Connection connection = com.example.prm392_cooking_guide_javaapp.connectDB.DatabaseConnection.getConnection();
-                    if (connection != null && !connection.isClosed()) {
-                        connection.close();
-                        return "SUCCESS: Kết nối database thành công!";
-                    } else {
-                        return "FAILED: Không thể kết nối database";
-                    }
-                } catch (Exception e) {
-                    return "ERROR: " + e.getMessage();
-                }
-            }
-
-            @Override
-            protected void onPostExecute(String result) {
-                btnTestConnection.setEnabled(true);
-                btnTestConnection.setText("🔗 Test Database Connection");
-                
-                boolean isSuccess = result.startsWith("SUCCESS");
-                showStatus(result, isSuccess);
-                
-                if (isSuccess) {
-                    Toast.makeText(LoginActivity.this, "Database kết nối thành công! Bạn có thể đăng nhập/đăng ký.", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Lỗi kết nối database: " + result, Toast.LENGTH_LONG).show();
-                }
-            }
-        }.execute();
     }
 
     private void showStatus(String message, boolean isSuccess) {
