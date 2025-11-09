@@ -1,12 +1,14 @@
 package com.example.prm392_cooking_guide_javaapp.connectDB;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.R;
+import com.example.prm392_cooking_guide_javaapp.R;
+import com.example.prm392_cooking_guide_javaapp.entity.DishDetailActivity;
 
 import java.sql.Connection;
 
@@ -26,6 +28,13 @@ public class TestConnectionActivity extends AppCompatActivity {
     }
 
     private void testConnection() {
+        Intent intent = new Intent(TestConnectionActivity.this, DishDetailActivity.class);
+
+        // (Tuỳ bạn) Gửi id món ăn muốn test qua
+        intent.putExtra("DISH_ID", 1);
+
+        // Chuyển sang màn DishDetailActivity
+        startActivity(intent);
         statusTextView.setText("Testing connection...");
         testButton.setEnabled(false);
 

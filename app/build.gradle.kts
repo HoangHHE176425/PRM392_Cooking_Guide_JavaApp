@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.myapplication"
+    namespace = "com.example.prm392_cooking_guide_javaapp"
     compileSdk = 35
 
     defaultConfig {
@@ -33,6 +33,7 @@ android {
 
 dependencies {
     implementation("net.sourceforge.jtds:jtds:1.3.1")
+    implementation ("com.squareup.picasso:picasso:2.8")
 
 
     implementation(libs.appcompat)
