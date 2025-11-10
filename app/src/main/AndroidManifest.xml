@@ -22,7 +22,7 @@
 
         <!-- LoginActivity làm màn hình chính -->
         <activity
-            android:name="com.example.prm392_cooking_guide_javaapp.activity.LoginActivity"
+            android:name="com.example.prm392_cooking_guide_javaapp.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp">
             <intent-filter>
@@ -33,25 +33,25 @@
 
         <!-- MainActivity -->
         <activity
-            android:name="com.example.prm392_cooking_guide_javaapp.activity.MainActivity"
+            android:name="com.example.prm392_cooking_guide_javaapp.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
 
         <!-- HomeActivity -->
         <activity
-            android:name="com.example.prm392_cooking_guide_javaapp.activity.HomeActivity"
+            android:name="com.example.prm392_cooking_guide_javaapp.HomeActivity"
             android:exported="false"
             android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
 
         <!-- ProfileActivity -->
         <activity
-            android:name="com.example.prm392_cooking_guide_javaapp.activity.ProfileActivity"
+            android:name="com.example.prm392_cooking_guide_javaapp.ProfileActivity"
             android:exported="false"
             android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
 
         <!-- RegisterActivity -->
         <activity
-            android:name="com.example.prm392_cooking_guide_javaapp.activity.RegisterActivity"
+            android:name="com.example.prm392_cooking_guide_javaapp.SignUpActivity"
             android:exported="false"
             android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
 

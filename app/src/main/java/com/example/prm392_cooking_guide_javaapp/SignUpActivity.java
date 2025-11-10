@@ -1,4 +1,4 @@
-package com.example.prm392_cooking_guide_javaapp.activity;
+package com.example.prm392_cooking_guide_javaapp;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -15,7 +15,7 @@ import com.example.prm392_cooking_guide_javaapp.dao.UserDAO;
 import com.example.prm392_cooking_guide_javaapp.entity.User;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class RegisterActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
     private TextInputEditText edtUsername, edtEmail, edtPassword, edtConfirmPassword, edtFullName;
     private Button btnRegister, btnBackToLogin;
     private TextView tvStatus;
@@ -175,7 +175,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (success) {
                 showStatus("✅ Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.", true);
                 
-                Toast.makeText(RegisterActivity.this, 
+                Toast.makeText(SignUpActivity.this,
                     "Đăng ký thành công!\nBạn có thể đăng nhập với tài khoản vừa tạo.", 
                     Toast.LENGTH_LONG).show();
                 
@@ -186,7 +186,7 @@ public class RegisterActivity extends AppCompatActivity {
                 
             } else {
                 showStatus("❌ " + errorMessage, false);
-                Toast.makeText(RegisterActivity.this, "Đăng ký thất bại: " + errorMessage, Toast.LENGTH_LONG).show();
+                Toast.makeText(SignUpActivity.this, "Đăng ký thất bại: " + errorMessage, Toast.LENGTH_LONG).show();
             }
         }
     }

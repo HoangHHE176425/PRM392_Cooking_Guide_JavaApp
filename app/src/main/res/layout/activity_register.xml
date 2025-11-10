@@ -3,60 +3,93 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@color/white">
+    android:background="#F8F9FA">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp"
-        android:gravity="center"
-        android:minHeight="0dp">
+        android:padding="20dp">
 
-        <!-- Header -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="30dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🍳"
-                android:textSize="48sp"
-                android:layout_marginBottom="12dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Đăng ký tài khoản"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginBottom="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tạo tài khoản mới để khám phá ẩm thực"
-                android:textSize="14sp"
-                android:textColor="#666666"
-                android:gravity="center" />
-
-        </LinearLayout>
-
-        <!-- Register Form Card -->
+        <!-- Header Card with Profile Info -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="@color/white">
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="24dp">
+
+                <!-- Avatar Card (giữ nguyên ID) -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="60dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true">
+
+                    <ImageView
+                        android:id="@+id/profileImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_profile_placeholder" />
+                </androidx.cardview.widget.CardView>
+
+                <!-- Username (giữ nguyên ID) -->
+                <TextView
+                    android:id="@+id/usernameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@username"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#FF6B35"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Full Name (giữ nguyên ID) -->
+                <TextView
+                    android:id="@+id/fullNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Họ và Tên"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#1F2937"
+                    android:layout_marginBottom="4dp" />
+
+                <!-- Email (giữ nguyên ID) -->
+                <TextView
+                    android:id="@+id/emailTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="email@example.com"
+                    android:textSize="14sp"
+                    android:textColor="#6B7280"
+                    android:layout_marginBottom="12dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Bio Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFFFFF">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,163 +97,83 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <!-- Username Input -->
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:hint="Tên đăng nhập"
-                    app:boxStrokeColor="#FF6B35"
-                    app:hintTextColor="#FF6B35"
-                    app:startIconDrawable="@drawable/ic_people"
-                    app:startIconTint="#FF6B35"
-                    app:helperText="3-20 ký tự">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtUsername"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:text="ℹ"
+                        android:textSize="14sp"
+                        android:textColor="#FF6B35"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:textSize="16sp" />
+                        android:text="Giới thiệu"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#1F2937" />
+                </LinearLayout>
 
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Email Input -->
-                <com.google.android.material.textfield.TextInputLayout
+                <!-- Bio (giữ nguyên ID) -->
+                <TextView
+                    android:id="@+id/bioTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:hint="Email"
-                    app:boxStrokeColor="#FF6B35"
-                    app:hintTextColor="#FF6B35"
-                    app:startIconDrawable="@drawable/ic_people"
-                    app:startIconTint="#FF6B35">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
-                        android:textSize="16sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Full Name Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:hint="Họ và tên"
-                    app:boxStrokeColor="#FF6B35"
-                    app:hintTextColor="#FF6B35"
-                    app:startIconDrawable="@drawable/ic_people"
-                    app:startIconTint="#FF6B35">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtFullName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:textSize="16sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Password Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:hint="Mật khẩu"
-                    app:boxStrokeColor="#FF6B35"
-                    app:hintTextColor="#FF6B35"
-                    app:startIconDrawable="@drawable/ic_people"
-                    app:startIconTint="#FF6B35"
-                    app:endIconMode="password_toggle"
-                    app:endIconTint="#FF6B35"
-                    app:helperText="Ít nhất 6 ký tự">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:textSize="16sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Confirm Password Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:hint="Xác nhận mật khẩu"
-                    app:boxStrokeColor="#FF6B35"
-                    app:hintTextColor="#FF6B35"
-                    app:startIconDrawable="@drawable/ic_people"
-                    app:startIconTint="#FF6B35"
-                    app:endIconMode="password_toggle"
-                    app:endIconTint="#FF6B35">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtConfirmPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:textSize="16sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <!-- Register Button -->
-                <Button
-                    android:id="@+id/btnRegister"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:text="Đăng ký"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:background="@drawable/rounded_button_orange"
-                    android:layout_marginBottom="16dp"
-                    android:elevation="4dp" />
-
-                <!-- Back to Login Button -->
-                <Button
-                    android:id="@+id/btnBackToLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:text="← Quay lại đăng nhập"
-                    android:textSize="16sp"
-                    android:textColor="#FF6B35"
-                    android:background="@drawable/rounded_button_white"
-                    android:elevation="2dp" />
+                    android:text="Giới thiệu ngắn gọn về bạn ở đây."
+                    android:textSize="14sp"
+                    android:textColor="#4B5563"
+                    android:lineSpacingExtra="2dp"
+                    android:gravity="start" />
 
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
 
-        <!-- Status Message -->
-        <TextView
-            android:id="@+id/tvStatus"
+        <!-- Action Buttons (giữ nguyên ID) -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="14sp"
-            android:gravity="center"
-            android:padding="16dp"
-            android:background="@drawable/search_background"
-            android:layout_marginBottom="20dp" />
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
-        <!-- Footer -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="© 2024 Cooking Guide App"
-            android:textSize="12sp"
-            android:textColor="#999999"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp" />
+            <!-- Edit Profile Button (giữ nguyên ID và thuộc tính để không ảnh hưởng Java code) -->
+            <Button
+                android:id="@+id/editProfileButton"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Chỉnh sửa thông tin"
+                android:backgroundTint="#FF6B35"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginBottom="14dp"
+                android:drawableStart="@drawable/ic_edit"
+                android:drawablePadding="8dp"
+                android:background="@drawable/rounded_button_orange"
+                android:elevation="4dp" />
+
+            <!-- Logout Button (giữ nguyên ID và thuộc tính) -->
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="Đăng xuất"
+                android:textStyle="bold"
+                android:backgroundTint="#FFFFFF"
+                android:textColor="#FF6B35"
+                android:drawableStart="@drawable/ic_logout"
+                android:drawablePadding="8dp"
+                android:background="@drawable/rounded_button_white"
+                android:elevation="2dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
 </ScrollView>
