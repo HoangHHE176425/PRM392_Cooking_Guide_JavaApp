@@ -1,4 +1,4 @@
-package com.example.prm392_cooking_guide_javaapp.entity;
+package com.example.prm392_cooking_guide_javaapp.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,27 +14,17 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.R;
-import com.example.prm392_cooking_guide_javaapp.activity.LoginActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     private TextView tvWelcome, tvUserInfo;
-    private Button btnLogout;
+    private Button btnProfile, btnLogout;
     private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        
-        // Check login status
-        sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
-        if (!sharedPreferences.getBoolean("isLoggedIn", false)) {
-            // Redirect to login
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-            return;
-        }
+        setContentView(R.layout.activity_home);
         
         initViews();
         displayUserInfo();
@@ -50,10 +40,12 @@ public class MainActivity extends AppCompatActivity {
     private void initViews() {
         tvWelcome = findViewById(R.id.tvWelcome);
         tvUserInfo = findViewById(R.id.tvUserInfo);
+        btnProfile = findViewById(R.id.btnProfile);
         btnLogout = findViewById(R.id.btnLogout);
     }
 
     private void displayUserInfo() {
+        sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE);
         String fullName = sharedPreferences.getString("fullName", "");
         String username = sharedPreferences.getString("username", "");
         String email = sharedPreferences.getString("email", "");
@@ -74,9 +66,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupListeners() {
+        if (btnProfile != null) {
+            btnProfile.setOnClickListener(v -> openProfile());
+        }
         if (btnLogout != null) {
             btnLogout.setOnClickListener(v -> logout());
         }
+    }
+
+    private void openProfile() {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
 
     private void logout() {
@@ -94,9 +94,5 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    @Override
-    public void onBackPressed() {
-        // Prevent back button from going to login
-        moveTaskToBack(true);
-    }
 }
+

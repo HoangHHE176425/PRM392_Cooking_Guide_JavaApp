@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.prm392_cooking_guide_javaapp.dao.UserDAO;
-import com.example.prm392_cooking_guide_javaapp.entity.MainActivity;
+import com.example.prm392_cooking_guide_javaapp.activity.HomeActivity;
 import com.example.prm392_cooking_guide_javaapp.entity.User;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkLoginStatus() {
         if (sharedPreferences.getBoolean("isLoggedIn", false)) {
-            goToMainActivity();
+            goToHomeActivity();
         }
     }
 
@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                 
                 // Delay before navigation for better UX
                 new android.os.Handler().postDelayed(() -> {
-                    goToMainActivity();
+                    goToHomeActivity();
                 }, 2000);
                 
             } else {
@@ -147,8 +147,8 @@ public class LoginActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    private void goToMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void goToHomeActivity() {
+        Intent intent = new Intent(this, HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();

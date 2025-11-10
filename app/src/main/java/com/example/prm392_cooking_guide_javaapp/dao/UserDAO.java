@@ -8,8 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDAO {
-    private static final String TAG = "UserDAO";
-
     /**
      * Đăng nhập user với username và password
      * @param username Tên đăng nhập
@@ -42,8 +40,7 @@ public class UserDAO {
             }
             
         } catch (SQLException e) {
-            System.err.println("Lỗi đăng nhập: " + e.getMessage());
-            e.printStackTrace();
+            // Silent fail - return null
         }
         
         return user;
@@ -71,8 +68,6 @@ public class UserDAO {
             return result > 0;
             
         } catch (SQLException e) {
-            System.err.println("Lỗi đăng ký: " + e.getMessage());
-            e.printStackTrace();
             return false;
         }
     }
@@ -96,8 +91,7 @@ public class UserDAO {
             }
             
         } catch (SQLException e) {
-            System.err.println("Lỗi kiểm tra username: " + e.getMessage());
-            e.printStackTrace();
+            // Silent fail - return false
         }
         
         return false;
@@ -122,8 +116,7 @@ public class UserDAO {
             }
             
         } catch (SQLException e) {
-            System.err.println("Lỗi kiểm tra email: " + e.getMessage());
-            e.printStackTrace();
+            // Silent fail - return false
         }
         
         return false;
@@ -158,10 +151,72 @@ public class UserDAO {
             }
             
         } catch (SQLException e) {
-            System.err.println("Lỗi lấy thông tin user: " + e.getMessage());
-            e.printStackTrace();
+            // Silent fail - return null
         }
         
         return user;
+    }
+
+    /**
+     * Cập nhật thông tin user
+     * @param user User object chứa thông tin cần cập nhật
+     * @return true nếu cập nhật thành công, false nếu thất bại
+     */
+    public boolean updateUser(User user) {
+        String query = "UPDATE Users SET full_name = ?, email = ?, bio = ?, avatar_url = ? WHERE id = ?";
+        
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            
+            statement.setString(1, user.getFullName() != null ? user.getFullName() : "");
+            statement.setString(2, user.getEmail() != null ? user.getEmail() : "");
+            statement.setString(3, user.getBio() != null ? user.getBio() : "");
+            
+            // Handle avatar_url - can be very long (Base64 string)
+            String avatarUrl = user.getAvatarUrl();
+            if (avatarUrl == null || avatarUrl.isEmpty()) {
+                statement.setNull(4, java.sql.Types.NVARCHAR);
+            } else {
+                // For very long strings, use setNString or setString
+                statement.setString(4, avatarUrl);
+            }
+            
+            statement.setInt(5, user.getId());
+            
+            int result = statement.executeUpdate();
+            return result > 0;
+            
+        } catch (SQLException e) {
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * Kiểm tra email đã tồn tại chưa (trừ user hiện tại)
+     * @param email Email cần kiểm tra
+     * @param excludeUserId ID của user cần loại trừ
+     * @return true nếu đã tồn tại, false nếu chưa
+     */
+    public boolean isEmailExists(String email, int excludeUserId) {
+        String query = "SELECT COUNT(*) FROM Users WHERE email = ? AND id != ?";
+        
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            
+            statement.setString(1, email);
+            statement.setInt(2, excludeUserId);
+            ResultSet resultSet = statement.executeQuery();
+            
+            if (resultSet.next()) {
+                return resultSet.getInt(1) > 0;
+            }
+            
+        } catch (SQLException e) {
+            // Silent fail - return false
+        }
+        
+        return false;
     }
 }

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".activity.HomeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -87,6 +87,17 @@
             android:layout_marginBottom="24dp">
 
             <Button
+                android:id="@+id/btnProfile"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="👤 Thông tin cá nhân"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_button_orange"
+                android:layout_marginBottom="16dp"
+                android:elevation="4dp" />
+
+            <Button
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -111,3 +122,4 @@
     </LinearLayout>
 
 </ScrollView>
+
