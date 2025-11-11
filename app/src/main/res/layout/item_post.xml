@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/post_card_background">
+
+    <TextView
+        android:id="@+id/usernameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3 giờ trước"
+        android:textSize="12sp"
+        android:textColor="#999999"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/contentTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nội dung bài viết"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="8dp" />
+
+    <ImageView
+        android:id="@+id/postImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:visibility="gone"
+        android:src="@drawable/ic_dish_placeholder" />
+
+    <ImageView
+        android:id="@+id/videoPlayIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_play_circle"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</LinearLayout>
