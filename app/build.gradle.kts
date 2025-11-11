@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.myapplication"
+    namespace = "com.example.prm392_cooking_guide_javaapp"
     compileSdk = 35
 
     defaultConfig {

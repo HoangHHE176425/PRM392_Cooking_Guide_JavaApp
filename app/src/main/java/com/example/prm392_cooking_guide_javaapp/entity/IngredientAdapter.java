@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.prm392_cooking_guide_javaapp.R;
 
-import com.example.prm392_cooking_guide_javaapp.entity.DishIngredient;
 import java.util.List;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder> {
