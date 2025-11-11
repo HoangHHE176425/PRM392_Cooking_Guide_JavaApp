@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm món ăn mới"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <ImageView
+            android:id="@+id/dishImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_dish_placeholder"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/selectImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chọn ảnh"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/dishNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Tên món ăn"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/dishDescriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:hint="Mô tả món ăn"
+            android:gravity="top"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/ingredientsEditText"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:hint="Nguyên liệu"
+            android:gravity="top"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/cookingStepsEditText"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:hint="Nhập cách làm (mỗi bước một dòng):&#10;Ví dụ:&#10;Nấu cơm&#10;Cuộn nguyên liệu&#10;Cắt và dùng"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mức độ khó"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/difficultySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:entries="@array/difficulty_levels"
+            android:layout_marginBottom="32dp" />
+
+        <Button
+            android:id="@+id/saveDishButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Thêm món ăn"
+            android:backgroundTint="#FF6B35"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+</ScrollView>
