@@ -1,4 +1,4 @@
-package com.example.prm392_cooking_guide_javaapp.entity;
+package com.example.myapplication.entity;
 
 import android.os.Bundle;
 
