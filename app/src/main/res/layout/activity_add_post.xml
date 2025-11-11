@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📝 Tạo bài viết mới"
+            android:textColor="#333"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="20dp" />
+
+        <EditText
+            android:id="@+id/contentEditText"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="top"
+            android:hint="Viết nội dung bài đăng..."
+            android:background="@drawable/search_background"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:textColorHint="#888"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/mediaPreview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            android:background="#EAEAEA" />
+
+        <VideoView
+            android:id="@+id/videoPreview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            android:background="#EAEAEA" />
+
+        <Button
+            android:id="@+id/selectMediaButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📂 Chọn ảnh hoặc video"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FF6B35"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/uploadButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đăng bài"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#007BFF"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</ScrollView>

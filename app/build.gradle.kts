@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace = "com.example.prm392_cooking_guide_javaapp"
+    namespace = "com.example.myapplication"
     compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.myapplication"
-        minSdk = 26
+        minSdk = 24
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -32,9 +32,11 @@ android {
 }
 
 dependencies {
+    // Sử dụng jTDS thay vì Microsoft JDBC (tương thích tốt hơn với Android)
     implementation("net.sourceforge.jtds:jtds:1.3.1")
-    implementation ("com.squareup.picasso:picasso:2.8")
 
+    // Bỏ Microsoft JDBC
+    // implementation("com.microsoft.sqlserver:mssql-jdbc:12.4.2.jre8")
 
     implementation(libs.appcompat)
     implementation(libs.material)
