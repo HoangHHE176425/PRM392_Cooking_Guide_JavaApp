@@ -2,8 +2,5 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<<<<<<< HEAD
-=======
-    <color name="bottom_nav_color">#FF6B35</color>
->>>>>>> origin/khanh
+    <color name="bottom_nav_color">@color/bottom_nav_selector</color>
 </resources>
