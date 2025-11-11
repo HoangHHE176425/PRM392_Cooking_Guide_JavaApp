@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package com.example.prm392_cooking_guide_javaapp.connectDB;
+=======
+package com.example.myapplication.connnectDB;
+>>>>>>> origin/khanh
 
 import android.os.StrictMode;
 import android.util.Log;
@@ -9,14 +13,22 @@ public class DatabaseConnection {
     private static final String TAG = "DatabaseConnection";
 
     // Thay "localhost" bằng IP thực của máy SQL Server
+<<<<<<< HEAD
     private static final String SERVER_IP = "10.33.38.45"; // IP máy chạy SQL Server
+=======
+    private static final String SERVER_IP = "192.168.57.101"; // IP máy chạy SQL Server
+>>>>>>> origin/khanh
 //    192.168.13.102
 //    10.33.8.133
 
     private static final String PORT = "1433";
     private static final String DATABASE_NAME = "Cooking_guide";
     private static final String USERNAME = "sa";
+<<<<<<< HEAD
     private static final String PASSWORD = "a123";
+=======
+    private static final String PASSWORD = "123";
+>>>>>>> origin/khanh
 
     public static Connection getConnection() {
         Connection connection = null;

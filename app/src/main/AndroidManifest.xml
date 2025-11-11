@@ -6,6 +6,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<<<<<<< HEAD
+=======
+    
+    <!-- Quyền truy cập ảnh -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+>>>>>>> origin/khanh
 
     <application
         android:allowBackup="true"
@@ -16,16 +23,57 @@
         android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp"
         tools:targetApi="35">
 
+<<<<<<< HEAD
         <!-- ✅ Chạy trực tiếp TestConnectionActivity -->
         <activity
             android:name="com.example.prm392_cooking_guide_javaapp.connectDB.TestConnectionActivity"
             android:exported="true">
+=======
+        <!-- LoginActivity làm màn hình chính -->
+        <activity
+            android:name="com.example.prm392_cooking_guide_javaapp.LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp">
+>>>>>>> origin/khanh
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+<<<<<<< HEAD
+=======
+        <!-- MainActivity -->
+        <activity
+            android:name="com.example.prm392_cooking_guide_javaapp.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
+
+        <!-- HomeActivity -->
+        <activity
+            android:name="com.example.prm392_cooking_guide_javaapp.HomeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
+
+        <!-- ProfileActivity -->
+        <activity
+            android:name="com.example.prm392_cooking_guide_javaapp.ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
+
+        <!-- RegisterActivity -->
+        <activity
+            android:name="com.example.prm392_cooking_guide_javaapp.SignUpActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
+
+        <!-- TestConnectionActivity (để test database) -->
+        <activity
+            android:name="com.example.prm392_cooking_guide_javaapp.connectDB.TestConnectionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PRM392_Cooking_Guide_JavaApp" />
+
+>>>>>>> origin/khanh
     </application>
 
 </manifest>
