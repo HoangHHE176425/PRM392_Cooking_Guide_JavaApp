@@ -1,4 +1,4 @@
-package com.example.myapplication.entity;
+package com.example.prm392_cooking_guide_javaapp.entity;
 
 import android.view.LayoutInflater;
 import android.view.View;
