@@ -1,16 +1,30 @@
+<<<<<<< HEAD
 package com.example.myapplication;
+=======
+package com.example.prm392_cooking_guide_javaapp;
+>>>>>>> origin/Dinhanh
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+<<<<<<< HEAD
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.google.android.material.snackbar.Snackbar;
 
 import com.example.myapplication.dao.UserDAO;
 import com.example.myapplication.entity.User;
+=======
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+import com.example.myapplication.R;
+import com.example.prm392_cooking_guide_javaapp.entity.User;
+import com.google.android.material.snackbar.Snackbar;
+>>>>>>> origin/Dinhanh
 
 public class LoginActivity extends AppCompatActivity {
     private EditText emailEditText, passwordEditText;
@@ -73,7 +87,11 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     } else {
+<<<<<<< HEAD
                         Intent intent = new Intent(LoginActivity.this, com.example.myapplication.HomeActivity.class);
+=======
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+>>>>>>> origin/Dinhanh
                         intent.putExtra("USER_ID", user.getId());
                         intent.putExtra("USERNAME", user.getUsername());
                         intent.putExtra("EMAIL", user.getEmail());
@@ -95,7 +113,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goToSignUp() {
+<<<<<<< HEAD
         Intent intent = new Intent(this, com.example.myapplication.SignUpActivity.class);
+=======
+        Intent intent = new Intent(this, SignUpActivity.class);
+>>>>>>> origin/Dinhanh
         startActivity(intent);
     }
 

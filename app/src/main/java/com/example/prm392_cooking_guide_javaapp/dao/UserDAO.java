@@ -5,6 +5,14 @@ import android.os.AsyncTask;
 import com.example.myapplication.connnectDB.DatabaseConnection;
 import com.example.myapplication.entity.User;
 
+<<<<<<< HEAD
+=======
+import android.os.AsyncTask;
+
+import com.example.prm392_cooking_guide_javaapp.connectDB.DatabaseConnection;
+import com.example.prm392_cooking_guide_javaapp.entity.User;
+
+>>>>>>> origin/Dinhanh
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

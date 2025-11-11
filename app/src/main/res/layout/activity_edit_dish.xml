@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_back"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Chỉnh sửa món ăn"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <!-- Content giống activity_add_dish.xml -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <ImageView
+                android:id="@+id/dishImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_dish_placeholder"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/selectImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đổi ảnh"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/dishNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Tên món ăn"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/dishDescriptionEditText"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:hint="Mô tả món ăn"
+                android:gravity="top"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/ingredientsEditText"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:hint="Nguyên liệu"
+                android:gravity="top"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/cookingStepsEditText"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:hint="Cách làm"
+                android:gravity="top"
+                android:layout_marginBottom="16dp" />
+
+            <Spinner
+                android:id="@+id/difficultySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:entries="@array/difficulty_levels"
+                android:layout_marginBottom="32dp" />
+
+            <Button
+                android:id="@+id/saveDishButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Lưu thay đổi"
+                android:backgroundTint="#FF6B35"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

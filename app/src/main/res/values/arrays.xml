@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="user_roles">
+        <item>user</item>
+        <item>admin</item>
+    </string-array>
+
+    <!-- THÊM ARRAY NÀY -->
+    <string-array name="difficulty_levels">
+        <item>easy</item>
+        <item>medium</item>
+        <item>hard</item>
+    </string-array>
+</resources>
